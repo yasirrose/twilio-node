@@ -15,8 +15,8 @@ app.post('/sms', (req, res) => {
   const message = req.body;
   twiml.message('The Robots are coming! Head for the hills!');
 
-  res.writeHead(200, {'Content-Type': 'text/xml'});
-  res.end(twiml.toString());
+//   res.writeHead(200, {'Content-Type': 'text/xml'});
+//   res.end(twiml.toString());
 });
 
 app.get('/send', (req, res) => { 
@@ -35,7 +35,7 @@ app.get('/send', (req, res) => {
     res.send('message send.');
 });
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('Express application running on localhost:3000');
 });
 
