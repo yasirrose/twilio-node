@@ -2,21 +2,26 @@ const http = require('http');
 const express = require('express');
 const MessagingResponse = require('twilio').twiml.MessagingResponse;
 
+var bodyParser = require('body-parser');
+var jsonParser = bodyParser.json()
+ 
+// create application/x-www-form-urlencoded parser
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 var twilio = require('twilio');
 const app = express();
+
 
 app.get('/', (req, res) => { 
   res.send('hello world');
 });
 
-app.post('/sms', (req, res) => {
+app.post('/sms',jsonParser, (req, res) => {
   const twiml = new MessagingResponse();
   console.log('body ------------------------------------------', req.body);
-  const message = req.body;
   twiml.message('The Robots are coming! Head for the hills!');
 
-//   res.writeHead(200, {'Content-Type': 'text/xml'});
-//   res.end(twiml.toString());
+  res.send(req.body);
 });
 
 app.get('/send', (req, res) => { 
