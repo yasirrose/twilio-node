@@ -21,7 +21,7 @@ app.post('/sms',jsonParser, (req, res) => {
   console.log('body ------------------------------------------', req.body);
   twiml.message('The Robots are coming! Head for the hills!');
 
-  res.send(twiml);
+  res.send(req.body);
 });
 
 app.get('/send', (req, res) => { 
