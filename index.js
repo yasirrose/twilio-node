@@ -13,6 +13,7 @@ const app = express();
 
 
 app.get('/', (req, res) => { 
+ console.log('req receive fromt he sinch: ', req);
   res.send('hello world');
 });
 
