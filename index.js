@@ -13,7 +13,8 @@ const app = express();
 
 
 app.get('/', (req, res) => { 
-  res.send('hello world');
+  console.log('req receive fromt he sinch: ', req);
+  res.send('hello world.');
 });
 
 app.post('/sms',jsonParser, (req, res) => {
